@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class GerenciadorWebConfig(AppConfig):
+class FrotasConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'gerenciador_web'
+    name = 'frotas'

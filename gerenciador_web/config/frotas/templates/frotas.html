@@ -1,0 +1,25 @@
+<h1>Lista de Veículos</h1>
+<table border="1">
+  <tr>
+    <th>Placa</th>
+    <th>Modelo</th>
+    <th>Status</th>
+    <th>Ações</th>
+  </tr>
+  {% for v in veiculos %}
+  <tr>
+    <td>{{ v.placa }}</td>
+    <td>{{ v.modelo }}</td>
+    <td>{{ v.get_status_display }}</td>
+    <td>
+      {% if v.status == 'disponivel' %}
+        <a href="{% url 'checkout_veiculo' v.id %}">Check-out</a>
+      {% elif v.status == 'em_uso' %}
+        <a href="#">Em uso</a>
+      {% else %}
+        Em manutenção
+      {% endif %}
+    </td>
+  </tr>
+  {% endfor %}
+</table>
