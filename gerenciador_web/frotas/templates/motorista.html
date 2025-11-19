@@ -1,0 +1,28 @@
+{% extends "app/base.html" %}
+
+{% block content %}
+<h2>Motoristas</h2>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Cartão de Habilitação</th>
+    </tr>
+    {% for motorista in motoristas %}
+    <tr>
+        <td>{{ motorista.id }}</td>
+        <td>{{ motorista.nome }}</td>
+        <td>{{ motorista.cnh }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h3>Adicionar Motorista</h3>
+<form method="post">
+    {% csrf_token %}
+    Nome: <input type="text" name="nome"><br>
+    CNH: <input type="text" name="cnh"><br>
+    <button type="submit">Adicionar</button>
+</form>
+{% endblock %}
