@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Motoristas</title>
+</head>
+<body>
+
+<h1>Motoristas</h1>
+
+<a href="{% url 'adicionar_motorista' %}">+ Adicionar Motorista</a>
+<br><br>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>CNH</th>
+        <th>Ações</th>
+    </tr>
+
+    {% for motorista in motoristas %}
+    <tr>
+        <td>{{ motorista.id }}</td>
+        <td><a href="{% url 'detalhe_motorista' motorista.id %}">{{ motorista.nome }}</a></td>
+        <td>{{ motorista.cnh }}</td>
+        <td>
+            <a href="{% url 'alterar_motorista' motorista.id %}">Editar</a> |
+            <a href="{% url 'excluir_motorista' motorista.id %}">Excluir</a>
+        </td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="4">Nenhum motorista cadastrado.</td></tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

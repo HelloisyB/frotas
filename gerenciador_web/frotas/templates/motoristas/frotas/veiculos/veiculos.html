@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Veículos</title>
+</head>
+<body>
+    <h1>Lista de Veículos</h1>
+
+    {% if veiculos %}
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Modelo</th>
+                    <th>Placa</th>
+                    <th>Ano</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for veiculo in veiculos %}
+                    <tr>
+                        <td>{{ veiculo.id }}</td>
+                        <td>{{ veiculo.modelo }}</td>
+                        <td>{{ veiculo.placa }}</td>
+                        <td>{{ veiculo.ano }}</td>
+                        <td>{{ veiculo.status }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Nenhum veículo cadastrado.</p>
+    {% endif %}
+</body>
+</html>
