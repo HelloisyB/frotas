@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>{{ motorista.nome }}</title>
+    <title>Detalhes do Motorista</title>
 </head>
 <body>
 
-<h1>{{ motorista.nome }}</h1>
-<p><strong>CNH:</strong> {{ motorista.cnh }}</p>
+    <h1>Detalhes do Motorista</h1>
 
-<br>
-<a href="{% url 'alterar_motorista' motorista.id %}">Editar</a> |
-<a href="{% url 'excluir_motorista' motorista.id %}">Excluir</a> |
-<a href="{% url 'lista_motoristas' %}">Voltar</a>
+    <p><strong>Nome:</strong> {{ motorista.nome }}</p>
+    <p><strong>CPF:</strong> {{ motorista.cpf }}</p>
+    <p><strong>Telefone:</strong> {{ motorista.telefone }}</p>
+
+    <br>
+    <a href="{% url 'listar_motoristas' %}">Voltar</a>
 
 </body>
 </html>

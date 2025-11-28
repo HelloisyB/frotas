@@ -48,10 +48,10 @@ def listar_veiculos(request):
     veiculos = Veiculo.objects.all().order_by('id')
     return render(request, 'veiculos.html', {'veiculos': veiculos})
 
-
 def listar_manutencoes(request):
     manutencoes = SolicitacaoManutencao.objects.all()
-    return render(request, 'manutencoes.html', {'manutencoes': manutencoes})
+    return render(request, 'manutencoes/listar_manutencoes.html', {'manutencoes': manutencoes})
+
 
 def listar_viagens(request):
     return render(request, 'viagens/lista_viagens.html')
