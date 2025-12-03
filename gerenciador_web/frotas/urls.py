@@ -1,16 +1,27 @@
-#urlpatterns = [
-    
-#python manage.py makemigrations]
-
-from django.urls import include, path
-
 from django.urls import path
 from . import views
 
 urlpatterns = [
     path('', views.dashboard, name='dashboard'),
+
+    # Motoristas
     path('motoristas/', views.listar_motoristas, name='listar_motoristas'),
+    path('motoristas/adicionar/', views.adicionar_motorista, name='adicionar_motorista'),
+    path('motoristas/<int:pk>/', views.detalhe_motorista, name='detalhe_motorista'),
+    path('motoristas/<int:pk>/editar/', views.alterar_motorista, name='alterar_motorista'),
+    path('motoristas/<int:pk>/excluir/', views.excluir_motorista, name='excluir_motorista'),
+
+    # Veículos
     path('veiculos/', views.listar_veiculos, name='listar_veiculos'),
-    path('manutencoes/', views.listar_manutencoes, name='listar_manutencoes'),
+    path('veiculos/adicionar/', views.adicionar_veiculo, name='adicionar_veiculo'),
+    path('veiculos/<int:pk>/editar/', views.alterar_veiculo, name='alterar_veiculo'),
+
+    # Viagens
     path('viagens/', views.listar_viagens, name='listar_viagens'),
+    path('viagens/iniciar/', views.iniciar_viagem, name='iniciar_viagem'),
+    path('viagens/<int:pk>/finalizar/', views.finalizar_viagem, name='finalizar_viagem'),
+
+    # Manutenções
+    path('manutencoes/', views.listar_manutencoes, name='listar_manutencoes'),
+    path('manutencoes/solicitar/', views.solicitar_manutencao, name='solicitar_manutencao'),
 ]

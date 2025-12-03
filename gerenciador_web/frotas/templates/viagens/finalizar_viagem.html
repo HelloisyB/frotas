@@ -1,0 +1,16 @@
+<h2>Finalizar Viagem</h2>
+<form method="post">
+    {% csrf_token %}
+    <p>Motorista: {{ viagem.motorista.nome }}</p>
+    <p>Veículo: {{ viagem.veiculo.modelo }} - {{ viagem.veiculo.placa }}</p>
+
+    <label>Km de Retorno:</label>
+    <input type="number" step="0.1" name="km_retorno" required><br>
+
+    <label>Observações:</label>
+    <textarea name="observacoes">{{ viagem.observacoes }}</textarea><br>
+
+    <button type="submit">Finalizar</button>
+</form>
+<a href="{% url 'listar_viagens' %}">Voltar</a>
+

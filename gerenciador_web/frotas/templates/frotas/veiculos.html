@@ -6,15 +6,18 @@
 </head>
 <body>
     <h1>Lista de Veículos</h1>
+    <a href="{% url 'dashboard' %}">Voltar</a> | 
+    <a href="{% url 'adicionar_veiculo' %}">Adicionar Veículo</a>
 
     {% if veiculos %}
-        <table>
+        <table border="1">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Modelo</th>
                     <th>Placa</th>
                     <th>Ano</th>
+                    <th>Km Atual</th>
                     <th>Status</th>
                 </tr>
             </thead>
@@ -25,6 +28,7 @@
                         <td>{{ veiculo.modelo }}</td>
                         <td>{{ veiculo.placa }}</td>
                         <td>{{ veiculo.ano }}</td>
+                        <td>{{ veiculo.km_atual }}</td>
                         <td>{{ veiculo.status }}</td>
                     </tr>
                 {% endfor %}

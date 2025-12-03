@@ -1,20 +1,29 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Sistema de Frotas</title>
+    <title>Dashboard da Frota</title>
+    <link rel="stylesheet" href="{% static 'css/frotas.css' %}">
 </head>
 <body>
 
-    <h1>Sistema de Frotas</h1>
-    <p>Selecione uma das opções abaixo:</p>
+<header>
+    Dashboard da Frota
+</header>
+
+<div class="container">
+    <p>Bem-vindo ao Dashboard da Frota.</p>
+    <p>Escolha uma opção:</p>
 
     <ul>
-        <li><a href="{% url 'listar_veiculos' %}">Gerenciar Veículos</a></li>
-        <li><a href="{% url 'listar_motoristas' %}">Gerenciar Motoristas</a></li>
-        <li><a href="{% url 'listar_viagens' %}">Registros de Viagens</a></li>
-        <li><a href="{% url 'listar_manutencoes' %}">Solicitações de Manutenção</a></li>
+        <li><a href="{% url 'listar_motoristas' %}">Motoristas</a></li>
+        <li><a href="{% url 'listar_veiculos' %}">Veículos</a></li>
+        <li><a href="{% url 'listar_manutencoes' %}">Manutenções</a></li>
+        <li><a href="{% url 'listar_viagens' %}">Viagens</a></li>
     </ul>
+</div>A
 
 </body>
 </html>

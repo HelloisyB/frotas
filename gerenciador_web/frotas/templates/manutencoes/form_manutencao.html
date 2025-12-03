@@ -1,0 +1,16 @@
+<h2>Solicitar Manutenção</h2>
+<form method="post">
+    {% csrf_token %}
+    <label>Veículo:</label>
+    <select name="veiculo">
+        {% for v in veiculos %}
+            <option value="{{ v.id }}">{{ v.modelo }} - {{ v.placa }}</option>
+        {% endfor %}
+    </select><br>
+
+    <label>Descrição do Problema:</label>
+    <textarea name="descricao_problema"></textarea><br>
+
+    <button type="submit">Registrar</button>
+</form>
+<a href="{% url 'listar_manutencoes' %}">Voltar</a>

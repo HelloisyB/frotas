@@ -1,0 +1,16 @@
+<h1>Lista de Motoristas</h1>
+<a href="{% url 'dashboard' %}">Voltar</a> | 
+<a href="{% url 'adicionar_motorista' %}">Adicionar Motorista</a>
+
+{% if motoristas %}
+    <ul>
+        {% for m in motoristas %}
+            <li>
+                {{ m.nome }} - {{ m.cnh }} 
+                | <a href="{% url 'detalhe_motorista' m.id %}">Detalhes</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Nenhum motorista cadastrado.</p>
+{% endif %}

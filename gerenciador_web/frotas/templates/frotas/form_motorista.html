@@ -1,0 +1,15 @@
+<h2>{{ titulo }}</h2>
+<form method="post">
+    {% csrf_token %}
+    <label>Nome:</label>
+    <input type="text" name="nome" value="{{ motorista.nome|default:'' }}" required><br>
+
+    <label>CNH:</label>
+    <input type="text" name="cnh" value="{{ motorista.cnh|default:'' }}" required><br>
+
+    <label>Telefone:</label>
+    <input type="text" name="telefone" value="{{ motorista.telefone|default:'' }}"><br>
+
+    <button type="submit">Salvar</button>
+</form>
+<a href="{% url 'listar_motoristas' %}">Voltar</a>

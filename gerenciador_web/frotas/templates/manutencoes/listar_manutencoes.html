@@ -1,0 +1,30 @@
+<h1>Solicitações de Manutenção</h1>
+<a href="{% url 'dashboard' %}">Voltar</a> | 
+<a href="{% url 'solicitar_manutencao' %}">Nova Solicitação</a>
+
+{% if manutencoes %}
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Veículo</th>
+                <th>Descrição</th>
+                <th>Data</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for m in manutencoes %}
+                <tr>
+                    <td>{{ m.id }}</td>
+                    <td>{{ m.veiculo.modelo }}</td>
+                    <td>{{ m.descricao_problema }}</td>
+                    <td>{{ m.data_solicitacao }}</td>
+                    <td>{% if m.atendida %}Atendida{% else %}Pendente{% endif %}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>Nenhuma solicitação registrada.</p>
+{% endif %}

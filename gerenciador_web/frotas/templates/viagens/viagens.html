@@ -1,0 +1,42 @@
+<h1>Viagens</h1>
+<a href="{% url 'dashboard' %}">Voltar</a> | 
+<a href="{% url 'iniciar_viagem' %}">Iniciar Viagem</a>
+
+{% if viagens %}
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Motorista</th>
+                <th>Veículo</th>
+                <th>Saída</th>
+                <th>Retorno</th>
+                <th>Km Saída</th>
+                <th>Km Retorno</th>
+                <th>Status</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for v in viagens %}
+                <tr>
+                    <td>{{ v.id }}</td>
+                    <td>{{ v.motorista.nome }}</td>
+                    <td>{{ v.veiculo.modelo }}</td>
+                    <td>{{ v.data_saida }}</td>
+                    <td>{{ v.data_retorno|default:"-" }}</td>
+                    <td>{{ v.km_saida }}</td>
+                    <td>{{ v.km_retorno|default:"-" }}</td>
+                    <td>{% if not v.data_retorno %}Em andamento{% else %}Finalizada{% endif %}</td>
+                    <td>
+                        {% if not v.data_retorno %}
+                            <a href="{% url 'finalizar_viagem' v.id %}">Finalizar</a>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>Nenhuma viagem registrada.</p>
+{% endif %}
