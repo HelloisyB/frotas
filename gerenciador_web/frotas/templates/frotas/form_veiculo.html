@@ -1,18 +1,58 @@
-<h2>{{ titulo }}</h2>
-<form method="post">
-    {% csrf_token %}
-    <label>Modelo:</label>
-    <input type="text" name="modelo" value="{{ veiculo.modelo|default:'' }}" required><br>
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Veículo</title>
 
-    <label>Placa:</label>
-    <input type="text" name="placa" value="{{ veiculo.placa|default:'' }}" required><br>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/veiculos.css' %}">
+</head>
+<body>
 
-    <label>Ano:</label>
-    <input type="number" name="ano" value="{{ veiculo.ano|default:'' }}" required><br>
+    <!-- HEADER -->
+    <header>
+        <h1>Gerenciamento de Frotas</h1>
+    </header>
 
-    <label>Km Atual:</label>
-    <input type="number" step="0.1" name="km_atual" value="{{ veiculo.km_atual|default:0 }}"><br>
+    <!-- CONTAINER -->
+    <div class="container">
 
-    <button type="submit">Salvar</button>
-</form>
-<a href="{% url 'listar_veiculos' %}">Voltar</a>
+        <h2>
+            {% if veiculo %}
+                Editar Veículo
+            {% else %}
+                Adicionar Veículo
+            {% endif %}
+        </h2>
+
+        <a href="{% url 'listar_veiculos' %}">← Voltar para a Lista</a>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <label>Modelo:</label>
+            <input type="text" name="modelo" value="{{ veiculo.modelo|default:'' }}" required>
+
+            <label>Placa:</label>
+            <input type="text" name="placa" value="{{ veiculo.placa|default:'' }}" required>
+
+            <label>Ano:</label>
+            <input type="number" name="ano" value="{{ veiculo.ano|default:'' }}" required>
+
+            <label>KM Atual:</label>
+            <input type="number" step="0.1" name="km_atual" value="{{ veiculo.km_atual|default:'' }}" required>
+
+            <button type="submit" class="btn">
+                {% if veiculo %}
+                    Salvar Alterações
+                {% else %}
+                    Adicionar Veículo
+                {% endif %}
+            </button>
+        </form>
+
+    </div>
+
+</body>
+</html>

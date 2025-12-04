@@ -1,0 +1,19 @@
+/* ======== VIAGENS ======== */
+
+.viagem-andamento {
+    color: #b88400;
+    font-weight: bold;
+}
+
+.viagem-finalizada {
+    color: green;
+    font-weight: bold;
+}
+
+.finalizar-btn {
+    background: #b85454;
+}
+
+.finalizar-btn:hover {
+    background: #944040;
+}

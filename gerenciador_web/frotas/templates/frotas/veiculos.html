@@ -1,41 +1,75 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <title>Veículos</title>
+
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/veiculos.css' %}">
 </head>
 <body>
-    <h1>Lista de Veículos</h1>
-    <a href="{% url 'dashboard' %}">Voltar</a> | 
-    <a href="{% url 'adicionar_veiculo' %}">Adicionar Veículo</a>
 
-    {% if veiculos %}
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Modelo</th>
-                    <th>Placa</th>
-                    <th>Ano</th>
-                    <th>Km Atual</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for veiculo in veiculos %}
+    <!-- HEADER -->
+    <header>
+        <h1>Gerenciamento de Frotas</h1>
+    </header>
+
+    <!-- CONTAINER -->
+    <div class="container">
+
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h2>Lista de Veículos</h2>
+            <a class="btn" href="{% url 'adicionar_veiculo' %}">+ Adicionar</a>
+        </div>
+
+        <a href="{% url 'dashboard' %}">← Voltar ao Dashboard</a>
+
+        {% if veiculos %}
+            <table>
+                <thead>
                     <tr>
-                        <td>{{ veiculo.id }}</td>
-                        <td>{{ veiculo.modelo }}</td>
-                        <td>{{ veiculo.placa }}</td>
-                        <td>{{ veiculo.ano }}</td>
-                        <td>{{ veiculo.km_atual }}</td>
-                        <td>{{ veiculo.status }}</td>
+                        <th>ID</th>
+                        <th>Modelo</th>
+                        <th>Placa</th>
+                        <th>Ano</th>
+                        <th>KM Atual</th>
+                        <th>Status</th>
+                        <th>Ações</th>
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    {% else %}
-        <p>Nenhum veículo cadastrado.</p>
-    {% endif %}
+                </thead>
+
+                <tbody>
+                    {% for v in veiculos %}
+                        <tr>
+                            <td>{{ v.id }}</td>
+                            <td>{{ v.modelo }}</td>
+                            <td>{{ v.placa }}</td>
+                            <td>{{ v.ano }}</td>
+                            <td>{{ v.km_atual }}</td>
+
+                            <td>
+                                {% if v.disponivel %}
+                                    <span class="status-disponivel">Disponível</span>
+                                {% else %}
+                                    <span class="status-uso">Em uso</span>
+                                {% endif %}
+                            </td>
+
+                            <td class="acao-links">
+                                <a href="{% url 'alterar_veiculo' v.id %}">Editar</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+
+        {% else %}
+            <p>Nenhum veículo cadastrado.</p>
+        {% endif %}
+
+    </div>
+
 </body>
 </html>

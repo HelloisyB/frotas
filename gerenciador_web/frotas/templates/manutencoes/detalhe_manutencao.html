@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>Detalhe da Manutenção #{{ manut.id }}</title>
+  <link rel="stylesheet" href="{% static 'css/manutencoes.css' %}">
+  <style>
+    /* pequeno ajuste local pra não depender só do css global */
+    .meta { color: #666; font-size: 0.95rem; margin-bottom: 8px; }
+    .descricao { white-space: pre-wrap; margin: 12px 0; }
+    .actions { margin-top: 18px; display:flex; gap:10px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Detalhe — Solicitação #{{ manut.id }}</h1>
+
+    <p class="meta"><strong>Veículo:</strong> {{ manut.veiculo.modelo }} — {{ manut.veiculo.placa }}</p>
+    <p class="meta"><strong>Data:</strong> {{ manut.data_solicitacao }}</p>
+    <p class="meta"><strong>Status:</strong>
+      {% if manut.concluida %}
+        <span class="status-concluida">Concluída</span>
+      {% else %}
+        <span class="status-pendente">Pendente</span>
+      {% endif %}
+    </p>
+
+    <h3>Descrição do problema</h3>
+    <div class="descricao">{{ manut.descricao_problema }}</div>
+
+    <div class="actions">
+      <a href="{% url 'listar_manutencoes' %}" class="btn btn-detalhes">Voltar</a>
+
+      {% if not manut.concluida %}
+        <!-- sua view de concluir usa GET; se preferir, eu mudo pra POST -->
+        <a href="{% url 'concluir_manutencao' manut.id %}" class="btn btn-concluir">Marcar como concluída</a>
+      {% endif %}
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+/* ======== VEÍCULOS ======== */
+
+.status-disponivel {
+    color: green;
+    font-weight: bold;
+}
+
+.status-uso {
+    color: #b85454;
+    font-weight: bold;
+}
+
+.acao-links a {
+    margin-right: 8px;
+}

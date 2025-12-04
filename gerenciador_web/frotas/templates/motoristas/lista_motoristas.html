@@ -1,17 +1,63 @@
-<!-- lista_motoristas.html -->
+{% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-    <title>Lista de Motoristas</title>
+    <meta charset="UTF-8">
+    <title>Motoristas</title>
+
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/motoristas.css' %}">
 </head>
 <body>
-    <h1>Lista de Motoristas</h1>
-    <ul>
-        {% for motorista in motoristas %}
-            <li>{{ motorista.nome }} - {{ motorista.cnh }}</li>
-        {% empty %}
-            <li>Nenhum motorista cadastrado.</li>
-        {% endfor %}
-    </ul>
+
+    <!-- HEADER -->
+    <header>
+        <h1>Gerenciamento de Frotas</h1>
+    </header>
+
+    <!-- CONTEÚDO -->
+    <div class="container">
+
+        <div class="motorista-header">
+            <h2>Lista de Motoristas</h2>
+            <a href="{% url 'adicionar_motorista' %}">+ Adicionar</a>
+        </div>
+
+        <a href="{% url 'dashboard' %}">← Voltar ao Dashboard</a>
+
+        {% if motoristas %}
+            <table class="table-motoristas">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>CNH</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for m in motoristas %}
+                        <tr>
+                            <td>{{ m.id }}</td>
+                            <td>{{ m.nome }}</td>
+                            <td>{{ m.cnh }}</td>
+                            <td class="acao-links">
+                                <a href="{% url 'detalhe_motorista' m.id %}">Detalhes</a> |
+                                <a href="{% url 'alterar_motorista' m.id %}">Editar</a> |
+                                <a href="{% url 'excluir_motorista' m.id %}">Excluir</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+
+        {% else %}
+            <p>Nenhum motorista cadastrado.</p>
+        {% endif %}
+
+    </div>
+
 </body>
 </html>

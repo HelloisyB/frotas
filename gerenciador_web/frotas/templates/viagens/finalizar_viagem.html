@@ -1,16 +1,33 @@
-<h2>Finalizar Viagem</h2>
-<form method="post">
-    {% csrf_token %}
-    <p>Motorista: {{ viagem.motorista.nome }}</p>
-    <p>Veículo: {{ viagem.veiculo.modelo }} - {{ viagem.veiculo.placa }}</p>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Finalizar Viagem</title>
+</head>
+<body>
 
-    <label>Km de Retorno:</label>
-    <input type="number" step="0.1" name="km_retorno" required><br>
+    <h1>Finalizar Viagem</h1>
 
-    <label>Observações:</label>
-    <textarea name="observacoes">{{ viagem.observacoes }}</textarea><br>
+    <a href="{% url 'listar_viagens' %}">Voltar</a>
 
-    <button type="submit">Finalizar</button>
-</form>
-<a href="{% url 'listar_viagens' %}">Voltar</a>
+    <p><strong>Motorista:</strong> {{ viagem.motorista.nome }}</p>
+    <p><strong>Veículo:</strong> {{ viagem.veiculo.modelo }} - {{ viagem.veiculo.placa }}</p>
+    <p><strong>KM Saída:</strong> {{ viagem.km_saida }}</p>
+    <p><strong>Data Saída:</strong> {{ viagem.data_saida|date:"d/m/Y H:i" }}</p>
 
+    <form method="POST">
+        {% csrf_token %}
+
+        <label>KM Retorno:</label><br>
+        <input type="number" step="0.1" name="km_retorno" required>
+        <br><br>
+
+        <label>Observações:</label><br>
+        <textarea name="observacoes" rows="4">{{ viagem.observacoes }}</textarea>
+        <br><br>
+
+        <button type="submit">Finalizar Viagem</button>
+    </form>
+
+</body>
+</html>

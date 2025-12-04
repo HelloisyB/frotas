@@ -1,0 +1,17 @@
+/* ======== MANUTENÇÕES ======== */
+
+.manutencao-card {
+    padding: 15px;
+    background: #ffffff;
+    border-left: 5px solid #a1c1be;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.manutencao-card h3 {
+    margin: 0;
+}
+
+.manutencao-concluida {
+    opacity: 0.6;
+}

@@ -1,0 +1,83 @@
+/* ======== BASE GLOBAL ======== */
+body {
+    font-family: Arial, sans-serif;
+    background: #f3f4e5;
+    margin: 0;
+    padding: 0;
+    color: #59554e;
+}
+
+header {
+    background: #59554e;
+    padding: 16px;
+    color: #ffffff;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 30px auto;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* LINKS */
+a {
+    color: #a1c1be;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #7ca39f;
+}
+
+/* BOTÕES */
+button, .btn {
+    padding: 10px 18px;
+    background: #a1c1be;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-block;
+}
+
+button:hover, .btn:hover {
+    background: #7ca39f;
+}
+
+/* FORM */
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #e2e3d9;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+/* TABELAS */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+table th {
+    background: #e2e3d9;
+    padding: 12px;
+    text-align: left;
+}
+
+table td {
+    padding: 10px;
+    border-bottom: 1px solid #f3f4e5;
+}

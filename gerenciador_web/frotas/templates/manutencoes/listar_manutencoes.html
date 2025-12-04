@@ -1,30 +1,72 @@
-<h1>Solicitações de Manutenção</h1>
-<a href="{% url 'dashboard' %}">Voltar</a> | 
-<a href="{% url 'solicitar_manutencao' %}">Nova Solicitação</a>
+{% load static %}
 
-{% if manutencoes %}
-    <table border="1">
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Solicitações de Manutenção</title>
+
+    <!-- Importando o CSS -->
+    <link rel="stylesheet" href="{% static 'css/manutencoes.css' %}">
+</head>
+<body>
+
+<div class="container">
+    <h1>Solicitações de Manutenção</h1>
+
+    <a href="{% url 'solicitar_manutencao' %}" class="btn">Nova Solicitação</a>
+
+    <table>
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Veículo</th>
-                <th>Descrição</th>
                 <th>Data</th>
                 <th>Status</th>
+                <th>Ações</th>
             </tr>
         </thead>
+
         <tbody>
             {% for m in manutencoes %}
-                <tr>
-                    <td>{{ m.id }}</td>
-                    <td>{{ m.veiculo.modelo }}</td>
-                    <td>{{ m.descricao_problema }}</td>
-                    <td>{{ m.data_solicitacao }}</td>
-                    <td>{% if m.atendida %}Atendida{% else %}Pendente{% endif %}</td>
-                </tr>
+            <tr>
+                <td>{{ m.id }}</td>
+                <td>{{ m.veiculo.modelo }} - {{ m.veiculo.placa }}</td>
+                <td>{{ m.data_solicitacao }}</td>
+
+                <td>
+                    {% if m.concluida %}
+                        <span class="status-concluida">Concluída</span>
+                    {% else %}
+                        <span class="status-pendente">Pendente</span>
+                    {% endif %}
+                </td>
+
+                <td class="actions">
+
+                    <!-- Botão de detalhes -->
+                    <a class="btn btn-detalhes" href="{% url 'detalhe_manutencao' m.id %}">
+                        Detalhes
+                    </a>
+
+                    <!-- Botão de concluir -->
+                    {% if not m.concluida %}
+                    <a class="btn btn-concluir" href="{% url 'concluir_manutencao' m.id %}">
+                        Concluir
+                    </a>
+                    {% endif %}
+                </td>
+            </tr>
+
+            {% empty %}
+            <tr>
+                <td colspan="5">Nenhuma manutenção registrada.</td>
+            </tr>
             {% endfor %}
         </tbody>
     </table>
-{% else %}
-    <p>Nenhuma solicitação registrada.</p>
-{% endif %}
+
+</div>
+
+</body>
+</html>

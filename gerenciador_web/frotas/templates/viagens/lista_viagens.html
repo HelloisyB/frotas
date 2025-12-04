@@ -1,13 +1,90 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Registros de Viagens</title>
+    <title>Viagens</title>
+
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/viagens.css' %}">
 </head>
 <body>
 
-    <h1>Lista de Viagens</h1>
-    <p>Ainda não há viagens cadastradas.</p>
+    <!-- HEADER -->
+    <header>
+        <h1>Gerenciamento de Frotas</h1>
+    </header>
+
+    <!-- CONTAINER -->
+    <div class="container">
+
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h2>Lista de Viagens</h2>
+            <a class="btn" href="{% url 'iniciar_viagem' %}">+ Iniciar Viagem</a>
+        </div>
+
+        <a href="{% url 'dashboard' %}">← Voltar ao Dashboard</a>
+
+        {% if viagens %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Motorista</th>
+                        <th>Veículo</th>
+                        <th>Km Saída</th>
+                        <th>Km Retorno</th>
+                        <th>Data Saída</th>
+                        <th>Data Retorno</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for v in viagens %}
+                        <tr>
+                            <td>{{ v.id }}</td>
+                            <td>{{ v.motorista.nome }}</td>
+                            <td>{{ v.veiculo.modelo }} - {{ v.veiculo.placa }}</td>
+                            <td>{{ v.km_saida }}</td>
+                            <td>{{ v.km_retorno|default:"-" }}</td>
+                            <td>{{ v.data_saida|date:"d/m/Y H:i" }}</td>
+
+                            <td>
+                                {% if v.data_retorno %}
+                                    {{ v.data_retorno|date:"d/m/Y H:i" }}
+                                {% else %}
+                                    -
+                                {% endif %}
+                            </td>
+
+                            <td>
+                                {% if v.km_retorno %}
+                                    <span class="viagem-finalizada">Finalizada</span>
+                                {% else %}
+                                    <span class="viagem-andamento">Em andamento</span>
+                                {% endif %}
+                            </td>
+
+                            <td>
+                                {% if not v.km_retorno %}
+                                    <a class="finalizar-btn btn" href="{% url 'finalizar_viagem' v.id %}">Finalizar</a>
+                                {% else %}
+                                    -
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+
+        {% else %}
+            <p>Ainda não há viagens cadastradas.</p>
+        {% endif %}
+
+    </div>
 
 </body>
 </html>

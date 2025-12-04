@@ -1,0 +1,22 @@
+/* ======== MOTORISTAS ======== */
+
+.table-motoristas tr:hover {
+    background: #f3f4e5;
+}
+
+.motorista-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.motorista-header a {
+    background: #a1c1be;
+    padding: 8px 14px;
+    color: white;
+    border-radius: 5px;
+}
+
+.motorista-header a:hover {
+    background: #7ca39f;
+}

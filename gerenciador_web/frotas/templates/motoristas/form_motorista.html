@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Motorista</title>
+
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/motoristas.css' %}">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <h1>Gerenciamento de Frotas</h1>
+    </header>
+
+    <!-- CONTAINER -->
+    <div class="container">
+
+        <h2>
+            {% if motorista %}
+                Editar Motorista
+            {% else %}
+                Adicionar Motorista
+            {% endif %}
+        </h2>
+
+        <a href="{% url 'listar_motoristas' %}">← Voltar para a Lista</a>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <label>Nome:</label>
+            <input type="text" name="nome" value="{{ motorista.nome|default:'' }}" required>
+
+            <label>CNH:</label>
+            <input type="text" name="cnh" value="{{ motorista.cnh|default:'' }}" required>
+
+            <button type="submit" class="btn">
+                {% if motorista %}
+                    Salvar Alterações
+                {% else %}
+                    Adicionar Motorista
+                {% endif %}
+            </button>
+        </form>
+
+    </div>
+
+</body>
+</html>

@@ -1,33 +1,38 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard da Frota</title>
-    {% load static %}
-  <link rel="stylesheet" href="{% static 'dashboard.css' %}">
-  <link rel="stylesheet" href="{% static 'frotas.css' %}">
-  <link rel="stylesheet" href="{% static 'manutencoes.css' %}">
-  <link rel="stylesheet" href="{% static 'listar_veiculos.css' %}">
+    <title>Dashboard</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
 </head>
 <body>
 
-<header>
-    Dashboard da Frota
-</header>
+    <!-- HEADER -->
+    <header>
+        <h1>Gerenciamento de Frotas</h1>
+    </header>
 
-<div class="container">
-    <p>Bem-vindo ao Dashboard da Frota.</p>
-    <p>Escolha uma opção:</p>
+    <!-- CONTEÚDO -->
+    <div class="container">
 
-    <ul>
-        <li><a href="{% url 'listar_motoristas' %}">Motoristas</a></li>
-        <li><a href="{% url 'listar_veiculos' %}">Veículos</a></li>
-        <li><a href="{% url 'listar_manutencoes' %}">Manutenções</a></li>
-        <li><a href="{% url 'listar_viagens' %}">Viagens</a></li>
-    </ul>
-</div>A
+        <h2>Dashboard</h2>
+
+        <p>Escolha uma área para gerenciar:</p>
+
+        <ul style="list-style: none; padding-left: 0;">
+            <li><a class="btn" href="{% url 'listar_motoristas' %}">Motoristas</a></li>
+            <br>
+            <li><a class="btn" href="{% url 'listar_veiculos' %}">Veículos</a></li>
+            <br>
+            <li><a class="btn" href="{% url 'listar_viagens' %}">Viagens</a></li>
+            <br>
+            <li><a class="btn" href="{% url 'listar_manutencoes' %}">Manutenções</a></li>
+        </ul>
+
+    </div>
 
 </body>
 </html>
