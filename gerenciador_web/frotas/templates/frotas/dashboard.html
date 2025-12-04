@@ -5,7 +5,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Dashboard da Frota</title>
-    <link rel="stylesheet" href="{% static 'css/frotas.css' %}">
+    {% load static %}
+  <link rel="stylesheet" href="{% static 'dashboard.css' %}">
+  <link rel="stylesheet" href="{% static 'frotas.css' %}">
+  <link rel="stylesheet" href="{% static 'manutencoes.css' %}">
+  <link rel="stylesheet" href="{% static 'listar_veiculos.css' %}">
 </head>
 <body>
 

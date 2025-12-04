@@ -25,3 +25,4 @@ urlpatterns = [
     path('manutencoes/', views.listar_manutencoes, name='listar_manutencoes'),
     path('manutencoes/solicitar/', views.solicitar_manutencao, name='solicitar_manutencao'),
 ]
+

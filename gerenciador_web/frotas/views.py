@@ -7,11 +7,6 @@ from .models import Motorista, Veiculo, RegistroViagem, SolicitacaoManutencao
 # -------------------------
 def dashboard(request):
     return render(request, 'frotas/dashboard.html')
-
-
-# -------------------------
-# Motoristas
-# -------------------------
 def listar_motoristas(request):
     motoristas = Motorista.objects.all()
     return render(request, 'motoristas/lista_motoristas.html', {'motoristas': motoristas})
@@ -20,9 +15,12 @@ def adicionar_motorista(request):
     if request.method == 'POST':
         nome = request.POST.get('nome')
         cnh = request.POST.get('cnh')
-        Motorista.objects.create(nome=nome, cnh=cnh)
+        if nome and cnh: 
+            Motorista.objects.create(nome=nome, cnh=cnh)
         return redirect('listar_motoristas')
-    return render(request, 'motoristas/form_motorista.html')
+    return render(request, 'frotas/motoristas/form_motorista.html')
+
+
 
 def alterar_motorista(request, pk):
     motorista = get_object_or_404(Motorista, pk=pk)

@@ -1,0 +1,17 @@
+<!-- confirmar_exclusao_motorista.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirmar Exclusão</title>
+</head>
+<body>
+    <h1>Excluir Motorista</h1>
+    <p>Tem certeza que deseja excluir o motorista <strong>{{ motorista.nome }}</strong>?</p>
+    
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Sim, excluir</button>
+        <a href="{% url 'listar_motoristas' %}">Cancelar</a>
+    </form>
+</body>
+</html>
