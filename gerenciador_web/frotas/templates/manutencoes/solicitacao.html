@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Solicitações de Manutenção</title>
+
+    <!-- CSS base -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <!-- CSS dashboard/manutenção -->
+    <link rel="stylesheet" href="{% static 'css/manuntencoes.css' %}">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <h1>Gerenciamento de Frotas</h1>
+    </header>
+
+    <!-- CONTEÚDO -->
+    <div class="container">
+
+        <h2>Solicitações de Manutenção</h2>
+        <p>Gerencie todas as solicitações de manutenção dos veículos.</p>
+
+        <!-- Botão para nova solicitação -->
+        <a href="{% url 'nova_solicitacao' %}" class="btn">Nova Solicitação</a>
+
+        <!-- Tabela de solicitações -->
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Veículo</th>
+                    <th>Data</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for solicitacao in solicitacoes %}
+                <tr>
+                    <td>{{ solicitacao.id }}</td>
+                    <td>{{ solicitacao.veiculo }}</td>
+                    <td>{{ solicitacao.data }}</td>
+                    <td>{{ solicitacao.status }}</td>
+                    <td>
+                        <a href="{% url 'detalhe_solicitacao' solicitacao.id %}" class="btn">Detalhes</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" style="text-align:center; color:#59554e;">Nenhuma solicitação encontrada.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+</body>
+</html>

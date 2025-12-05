@@ -1,17 +1,50 @@
 /* ======== MANUTENÇÕES ======== */
 
-.manutencao-card {
-    padding: 15px;
-    background: #ffffff;
-    border-left: 5px solid #a1c1be;
-    margin-bottom: 15px;
+/* Título da página */
+h2 {
+    color: #59554e;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Botão de nova solicitação */
+.btn-nova {
+    background-color: #a1c1be;
+    color: #ffffff;
     border-radius: 5px;
+    padding: 10px 20px;
+    display: inline-block;
+    margin-bottom: 20px;
 }
 
-.manutencao-card h3 {
-    margin: 0;
+.btn-nova:hover {
+    background-color: #7ca39f;
+    color: #ffffff;
 }
 
-.manutencao-concluida {
-    opacity: 0.6;
+/* Tabela de solicitações */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+table th {
+    background-color: #e2e3d9;
+    padding: 12px;
+    text-align: left;
+}
+
+table td {
+    padding: 10px;
+    border-bottom: 1px solid #f3f4e5;
+}
+
+/* Formulários dentro da página */
+form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
 }

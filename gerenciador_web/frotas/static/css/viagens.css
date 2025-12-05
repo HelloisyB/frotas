@@ -1,19 +1,26 @@
 /* ======== VIAGENS ======== */
 
-.viagem-andamento {
-    color: #b88400;
-    font-weight: bold;
+/* Formulário de nova viagem */
+form.viagem-form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
 }
 
-.viagem-finalizada {
-    color: green;
-    font-weight: bold;
+/* Campos do formulário */
+form.viagem-form input,
+form.viagem-form select,
+form.viagem-form textarea {
+    margin-bottom: 15px;
 }
 
-.finalizar-btn {
-    background: #b85454;
+/* Botões dentro do formulário */
+form.viagem-form .btn {
+    background-color: #a1c1be;
 }
 
-.finalizar-btn:hover {
-    background: #944040;
+form.viagem-form .btn:hover {
+    background-color: #7ca39f;
 }

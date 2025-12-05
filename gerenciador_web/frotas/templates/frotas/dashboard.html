@@ -3,10 +3,13 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard</title>
+    <title>Dashboard - Gerenciamento de Frotas</title>
 
-    <!-- CSS -->
+    <!-- CSS base comum a todas as páginas -->
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+    <!-- CSS específico do dashboard (pode criar se quiser personalizar) -->
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
 </head>
 <body>
 
@@ -15,23 +18,17 @@
         <h1>Gerenciamento de Frotas</h1>
     </header>
 
-    <!-- CONTEÚDO -->
+    <!-- CONTEÚDO PRINCIPAL -->
     <div class="container">
-
         <h2>Dashboard</h2>
-
         <p>Escolha uma área para gerenciar:</p>
 
-        <ul style="list-style: none; padding-left: 0;">
+        <ul class="menu" style="list-style: none; padding-left: 0;">
             <li><a class="btn" href="{% url 'listar_motoristas' %}">Motoristas</a></li>
-            <br>
             <li><a class="btn" href="{% url 'listar_veiculos' %}">Veículos</a></li>
-            <br>
             <li><a class="btn" href="{% url 'listar_viagens' %}">Viagens</a></li>
-            <br>
             <li><a class="btn" href="{% url 'listar_manutencoes' %}">Manutenções</a></li>
         </ul>
-
     </div>
 
 </body>
